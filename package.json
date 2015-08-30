@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "bunyan": "^1.4.0",
     "restify": "^4.0.0"
   }
 }
