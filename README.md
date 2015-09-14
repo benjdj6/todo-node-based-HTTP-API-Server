@@ -32,16 +32,24 @@ from the todo directory
 
 Here are some sample curl calls to use on the service
 <b>GET all Items</b>
-'curl -i -X GET localhost:8080/items'
+'''
+curl -i -X GET localhost:8080/items
+'''
 
 <b>GET all Lists</b>
-'curl -i -X GET localhost:8080/lists'
+'''
+curl -i -X GET localhost:8080/lists
+'''
 
 <b>PUT a new Item</b>
-'curl -i -X PUT localhost:8080/items/myItem --data '{"content":"sample task 9", "list":"samplelist3", "complete":"false"}' -H 'content-type: application/json''
+'''
+curl -i -X PUT localhost:8080/items/myItem --data '{"content":"sample task 9", "list":"samplelist3", "complete":"false"}' -H 'content-type: application/json'
+'''
 
 <b>DELETE an Item by ID</b>
-'curl -X DELETE -i localhost:8080/items/itemID --data '{"id":"1"}' -H 'content-type: application/json''
+'''
+curl -X DELETE -i localhost:8080/items/itemID --data '{"id":"1"}' -H 'content-type: application/json'
+'''
 
 <h2>To Come</h2>
 I'm currently working on: 
