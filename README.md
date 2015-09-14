@@ -33,7 +33,7 @@ Here are some sample curl calls to use on the service:
 
 <b>GET all Items</b>
 
-curl -i -X GET localhost:8080/items
+>curl -i -X GET localhost:8080/items
 
 
 <b>GET all Lists</b>
