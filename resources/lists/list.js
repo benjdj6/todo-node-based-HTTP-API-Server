@@ -1,8 +1,3 @@
-/**module.exports = function listLists(rec, res, next) {
-	res.send({hey: 'there'});
-	next();
-};**/
-
 var http = require('http');
 var pg = require('pg');
 
@@ -36,26 +31,22 @@ module.exports = function listLists(req, res, next) {
     	if(handleError(err)) {
     		return;
     	}
-    	/**else {
-    		console.log("No error");
-    		return;
-    	}**/
 
     	// record the visit
     	/**client.query('INSERT INTO tasks (content, list, complete) VALUES (%s, %s, %b)', 
     		(params.content,), (params.list,), (params.complete), function(err, result)**/
 
-      	// get the total number of visits today (including the current visit)
-      	client.query('SELECT * FROM tasks;', function(err, result) {
+      	// get all of the different lists
+      	client.query('SELECT list from tasks group by list;', function(err, result) {
 
         	// handle an error from the query
         	if(handleError(err)) return;
 
         	// return the client to the connection pool for other requests to reuse
         	done();
-        	console.log(result);
-        	res.writeHead(200, {'content-type': 'text/plain'});
-        	res.end('The lists are: ' + result);
+        	var json = JSON.stringify(result.rows);
+    		res.writeHead(200, {'content-type':'application/json', 'content-length':Buffer.byteLength(json)}); 
+    		res.end(json);
         	res.send();
     	});
 	});
