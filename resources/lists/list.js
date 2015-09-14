@@ -1,4 +1,3 @@
-var http = require('http');
 var pg = require('pg');
 
 var conString = "postgres://testuser:password@localhost:5432/todo";
@@ -31,10 +30,6 @@ module.exports = function listLists(req, res, next) {
     	if(handleError(err)) {
     		return;
     	}
-
-    	// record the visit
-    	/**client.query('INSERT INTO tasks (content, list, complete) VALUES (%s, %s, %b)', 
-    		(params.content,), (params.list,), (params.complete), function(err, result)**/
 
       	// get all of the different lists
       	client.query('SELECT list from tasks group by list;', function(err, result) {

@@ -5,6 +5,6 @@ var resources = require('./resources');
 server.get('/lists', resources.lists.list);
 
 //Tasks
-server.get('/lists/:list/items', resources.items.list);
-server.post('/lists/:list/items', resources.items.create);
-server.del('/lists/:list/items/:item', resources.items.del);
+server.get('/items', resources.items.list);
+server.put('/items/:item', resources.items.list);
+server.del('/items/:item', resources.items.list);
