@@ -13,7 +13,7 @@ In order to run this server you need the following installed.
 To setup the Postgres Database such that it will work with this server, please follow the setup instructions of PostgreSQL on their site. I recommend using Postgres.app for faster setup as it will run on the proper port 5432 by default. Then do the following.
 
 run:
-'''
+''''
 psql createdb todo;
 
 \c todo
@@ -22,4 +22,4 @@ psql createdb todo;
 
 CREATE USER testuser WITH PASSWORD password;
 
-GRANT ALL PRIVILEGES ON tasks TO testuser;'''
+GRANT ALL PRIVILEGES ON tasks TO testuser;''''
