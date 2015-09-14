@@ -2,10 +2,9 @@ var pg = require('pg');
 
 var conString = "postgres://testuser:password@localhost:5432/todo";
 
-module.exports = function listLists(req, res, next) {
+module.exports = function createItem(req, res, next) {
 
 	body = req.body;
-	console.log('HANDLER: ', body);
 
 	pg.connect(conString, function(err, client, done) {
 
@@ -33,8 +32,8 @@ module.exports = function listLists(req, res, next) {
     	}
 
     	// record the new task
-    	client.query('INSERT INTO tasks (content, list, complete) VALUES (%s, %s, %b)', 
-    		body.content, body.list, body.complete, function(err, result) {
+    	client.query('INSERT INTO tasks (content, list, complete) VALUES ($1, $2, $3);', 
+    		[body.content, body.list, body.complete], function(err, result) {
 
         	// handle an error from the query
         	if(handleError(err)) return;

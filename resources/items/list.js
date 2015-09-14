@@ -2,7 +2,7 @@ var pg = require('pg');
 
 var conString = "postgres://testuser:password@localhost:5432/todo";
 
-module.exports = function listLists(req, res, next) {
+module.exports = function listItems(req, res, next) {
 
 	//params = req.query;
 
