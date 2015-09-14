@@ -7,11 +7,18 @@ var options = {
 
 var server = restify.createServer(options);
 
+//Gets request body
+server.use(restify.bodyParser({
+	maxBodySize: 10 * 1024
+}));
+
+server.use(restify.queryParser());
+
 server.on('after', restify.auditLogger({
 	log: bunyan.createLogger({
 		name: 'audit',
 		stream: process.stdout
-	});
+	})
 }));
 
 module.exports = server;
